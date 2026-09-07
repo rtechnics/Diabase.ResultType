@@ -1,0 +1,22 @@
+---
+name: diabase-resulttype-actions
+networks:
+  diabase-resulttype-actions:
+    name: diabase-resulttype-actions
+    driver: bridge
+services:
+  shell:
+    image: diabase-resulttype-actions-shell:latest
+    container_name: shell
+    networks:
+      - diabase-resulttype-actions
+    user: "0"
+    volumes:
+      - ${XDG_RUNTIME_DIR}/podman/podman.sock:${XDG_RUNTIME_DIR}/podman/podman.sock
+      - ${XDG_CACHE_HOME}/act:/env/.cache/act
+      - ${XDG_CACHE_HOME}/actcache:/env/.cache/actcache
+      - .artifacts:/env/repo/.artifacts
+      - .:/env/repo:ro
+    environment:
+      DOCKER_HOST: unix://${XDG_RUNTIME_DIR}/podman/podman.sock
+    working_dir: /env/repo

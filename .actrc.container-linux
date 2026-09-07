@@ -1,0 +1,4 @@
+--network diabase-resulttype-actions
+--cache-server-addr 0.0.0.0
+--cache-server-external-url http://shell
+--artifact-server-addr 0.0.0.0

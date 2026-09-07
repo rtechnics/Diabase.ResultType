@@ -361,3 +361,12 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Nix
+.devenv
+.direnv
+.pre-commit-config.yaml
+result*
+
+# act (GitHub Actions runner)
+**/.artifacts

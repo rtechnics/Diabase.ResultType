@@ -45,8 +45,12 @@ jobs:
         uses: actions/setup-dotnet@v6
         with:
           global-json-file: global.json
-          cache: true
-          cache-dependency-path: ./packages.lock.json
+          # No .NET library dependencies so disable caching.
+          # Otherwise an error will occur when it tries to cache
+          # the empty dependency directory.
+          # cache: true
+          # cache-dependency-path: ./packages.lock.json
+      # Required to generate `project.assets.json`, which the build step uses
       - name: Fetch dependencies
         run: |
           dotnet restore --locked-mode
